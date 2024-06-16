@@ -1,0 +1,10 @@
+install pip
+    curl -k https://bootstrap.pypa.io/get-pip.py | python3
+update pip
+    python -m pip install --upgrade pip
+update all pip packages (Windows)
+    pip freeze | %{$_.split(-==')[0]} | %{pip install --upgrade $_}
+make the requirements file
+    pip freeze > requirements.txt
+install packages from requirements.txt
+    pip install -r requirements.txt
