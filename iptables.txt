@@ -1,0 +1,68 @@
+View Current Rules
+iptables -L                # List all rules
+iptables -L -v -n          # List rules with detailed info and numeric addresses
+iptables-save              # Display current iptables rules
+
+Clear/Delete Rules
+iptables -F                # Flush all rules
+iptables -X                # Delete all user-defined chains
+iptables -Z                # Zero packet and byte counters
+
+Set Default Policies
+iptables -P INPUT DROP     # Default policy to drop all incoming packets
+iptables -P FORWARD DROP   # Default policy to drop all forwarded packets
+iptables -P OUTPUT ACCEPT  # Default policy to accept all outgoing packets
+
+Rule Management
+Allow/Block Specific IP
+iptables -A INPUT -s 192.168.1.1 -j ACCEPT      # Allow from specific IP
+iptables -A INPUT -s 192.168.1.1 -j DROP        # Block specific IP
+
+Allow/Block Specific Port
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT   # Allow SSH (port 22)
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT   # Allow HTTP (port 80)
+iptables -A INPUT -p tcp --dport 80 -j DROP     # Block HTTP (port 80)
+
+Allow/Block Specific Network
+iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT   # Allow entire subnet
+iptables -A INPUT -s 192.168.1.0/24 -j DROP     # Block entire subnet
+
+Advanced Rules
+NAT (Network Address Translation)
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE          # Enable NAT
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.1.100:80  # Port forwarding
+
+Rate Limiting
+iptables -A INPUT -p tcp --dport 22 -m limit --limit 3/min -j ACCEPT  # Limit SSH connections
+
+Logging
+iptables -A INPUT -j LOG --log-prefix "IPTables-Dropped: " --log-level 4  # Log dropped packets
+
+Stateful Rules
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT   # Allow established/related connections
+
+Common Scenarios
+Block Ping Requests
+iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
+
+Allow Loopback Traffic
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+
+Allow HTTP and HTTPS
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT    # Allow HTTP
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT   # Allow HTTPS
+
+Drop Invalid Packets
+iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
+
+Saving and Restoring Rules
+Save Rules
+iptables-save > /etc/iptables/rules.v4
+
+Restore Rules
+iptables-restore < /etc/iptables/rules.v4
+Additional Tools
+iptables-persistent
+
+sudo apt-get install iptables-persistent
