@@ -1,0 +1,25 @@
+Basic:
+    Filter out noise
+        smb || smb2 ||  nbns || dcerpc || nbss || dns
+    Filter by host
+        ip.host == 192.168.187.251
+    Filter by destination Host
+        ip.dst_host
+    Filter by source host
+        ip.src_host
+    Filter by Network:
+        ip.addr == 192.168.10.0/24
+    Packets with VLAN Tags 802.1Q
+        vlan
+    TCP Connection establishment
+        tcp.flags.syn==1 (initial syn packets)
+    TCP Connection termination
+        tcp.flags.fin==1 (FIN packets)
+        tcp.flags.rst == 1 (RST Packets - Reset)
+    Ethernet filter by vendor
+        eth.addr[0:3]==00:06:5B
+    SIP to-header contains a string
+        sip.To contains "a1762"
+    TCP/UDP filter by port:
+        tcp.port == 5000
+        udp.port == 5000
