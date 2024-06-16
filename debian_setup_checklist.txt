@@ -16,6 +16,8 @@ change the interfaces names to wlanX, ethX and so on
         address 10.14.5.254
         netmask 255.255.255.0
         gateway 10.14.5.1
+    vlan-raw-device wlan0
+    vlan-raw-device eth0
     # set also dns server
     nano /etc/resolv.conf
         nameserver 8.8.8.8
