@@ -1,0 +1,141 @@
+Capture packets on a specific interface 
+
+tcpdump -i eth0 
+
+ 
+
+# Capture packets on a specific interface with verbose output 
+
+tcpdump -i eth0 -v 
+
+ 
+
+# Capture packets on a specific interface and write to a file 
+
+tcpdump -i eth0 -w capture.pcap 
+
+ 
+
+# Capture packets on a specific interface and display in ASCII format 
+
+tcpdump -i eth0 -A 
+
+ 
+
+# Capture packets on a specific interface and display in HEX format 
+
+tcpdump -i eth0 -X 
+
+ 
+
+# Capture packets on a specific interface with packet timestamp 
+
+tcpdump -i eth0 -tttt 
+
+ 
+
+# Capture packets on a specific interface with verbose output and packet timestamp 
+
+tcpdump -i eth0 -vtttt 
+
+ 
+
+# Capture packets on a specific interface with packet size 
+
+tcpdump -i eth0 -s 0 
+
+ 
+
+# Capture packets on a specific interface with filter expression 
+
+tcpdump -i eth0 port 80 
+
+ 
+
+# Capture packets on a specific interface with filter expression and write to a file 
+
+tcpdump -i eth0 port 80 -w capture.pcap 
+
+ 
+
+# Capture packets on a specific interface with filter expression and display in ASCII format 
+
+tcpdump -i eth0 port 80 -A 
+
+ 
+
+# Capture packets on a specific interface with filter expression and display in HEX format 
+
+tcpdump -i eth0 port 80 -X 
+
+ 
+
+# Capture packets on a specific interface with filter expression and packet timestamp 
+
+tcpdump -i eth0 port 80 -tttt 
+
+ 
+
+# Capture packets on a specific interface with filter expression, verbose output, and packet timestamp 
+
+tcpdump -i eth0 port 80 -vtttt 
+
+ 
+
+# Capture packets on a specific interface with filter expression and packet size 
+
+tcpdump -i eth0 port 80 -s 0 
+
+ 
+
+# Capture packets on a specific interface with filter expression and specific host 
+
+tcpdump -i eth0 host 192.168.1.100 
+
+ 
+
+# Capture packets on a specific interface with filter expression and specific network 
+
+tcpdump -i eth0 net 192.168.1.0/24 
+
+ 
+
+# Capture packets on a specific interface with filter expression, specific host, and specific port 
+
+tcpdump -i eth0 host 192.168.1.100 and port 80 
+
+ 
+
+# Capture packets on a specific interface with filter expression, specific network, and specific port 
+
+tcpdump -i eth0 net 192.168.1.0/24 and port 80 
+
+ 
+
+# Capture packets on a specific interface with filter expression, specific source, and specific destination 
+
+tcpdump -i eth0 src host 192.168.1.100 and dst host 192.168.1.200 
+
+ 
+
+# Capture packets on a specific interface with filter expression, specific source network, and specific destination network 
+
+tcpdump -i eth0 src net 192.168.1.0/24 and dst net 192.168.2.0/24 
+
+ 
+
+# Capture packets on a specific interface with filter expression, specific source port, and specific destination port 
+
+tcpdump -i eth0 src port 1024 and dst port 80 
+
+ 
+
+# Capture packets on a specific interface with filter expression, excluding specific host 
+
+tcpdump -i eth0 not host 192.168.1.100 
+
+ 
+
+# Capture packets on a specific interface with filter expression, excluding specific network 
+
+tcpdump -i eth0 not net 192.168.1.0/24 

@@ -1,0 +1,34 @@
+# Layer-2 
+View ARP cache 
+    arp -a 
+Clear ARP cache 
+    arp -d * 
+Display ARP Cache Entry for specific IP 
+    arp -a IPADDRESS 
+Show neighbor cache entries 
+    ip neigh show 
+# Layer-3 
+Print Routing table 
+    route -n 
+Trace Route 
+    traceroute IPADDRESS 
+Combine Trace Route and Ping and statistics for SECONDS 
+There's no direct equivalent for `pathping` in Linux, but you can use `mtr` (My TraceRoute) with the `-r` option to generate similar statistics: 
+    mtr -r -n -c 10 IPADDRESS 
+# Layer-4 
+Display active Connections and Listening Ports 
+    netstat -ano 
+Query DHCP
+    dhclient -r IFACE -v` 
+# Layer-5 & Layer-6 
+DNS Query 
+    dig DOMAIN 
+    nslokup DOMAIN 
+Reverse DNS Record lookup 
+    nslookup IPADDRESS 
+Query a TCP/IP Port scan 
+    nmap -p PORT HOST 
+
+arping -c 1 -I eth0 [destination_IP] 
+arping -I eth0 -c 1 192.168.1.1 
+ip -s -s neigh flush all 
