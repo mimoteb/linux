@@ -1,0 +1,101 @@
+Show network interfaces: 
+
+ip linkshow 
+
+# Display information about all network interfaces 
+
+ 
+
+Show IP addresses: 
+
+ip address show 
+
+# Display IP addresses and related information for all interfaces 
+
+ 
+
+Show routing table: 
+
+ip route show  
+
+# Display the routing table 
+
+ 
+
+Bring an interface up: 
+
+ip linksetdev [interface] up  
+
+# Activate a network interface 
+
+ 
+
+Bring an interface down: 
+
+ip linksetdev [interface] down  
+
+# Deactivate a network interface 
+
+ 
+
+Assign an IP address to an interface: 
+
+ip address add [ip_address/mask] dev [interface]  
+
+# Assign an IP address and subnet mask to an interface 
+
+ 
+
+Remove an IP address from an interface: 
+
+ip address del [ip_address/mask] dev [interface] 
+
+# Remove an IP address from an interface 
+
+ 
+
+Add a route: 
+
+ip route add [network_address/mask] via [gateway] dev [interface]  
+
+# Add a route to reach a specific network via a gateway 
+
+ 
+
+Delete a route: 
+
+ip route del [network_address/mask] via [gateway] dev [interface]  
+
+# Remove a route from the routing table 
+
+ 
+
+Show ARP table: 
+
+ip neigh show  
+
+# Display the ARP table (Neighbor table) 
+
+ 
+
+Flush ARP table: 
+
+ip neigh flush all  
+
+# Clear the ARP table 
+
+ 
+
+Enable IP forwarding: 
+
+sysctl -w net.ipv4.ip_forward=1  
+
+# Enable IP forwarding to allow packet forwarding between interfaces 
+
+ 
+
+Disable IP forwarding: 
+
+sysctl -w net.ipv4.ip_forward=0  
+
+# Disable IP forwarding 
