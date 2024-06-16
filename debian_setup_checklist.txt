@@ -1,0 +1,32 @@
+install important packages
+    apt update
+    apt install curl wget
+change hostname
+    hostnamectl set-hostname srvDebian
+    # restart needed
+change the interfaces names to wlanX, ethX and so on
+    sudo nano /etc/default/grub
+    # look for "GRUB_CMDLINE_LINUX" and change it to:
+    # "GRUB_CMDLINE_LINUX = "net.ifnames=0 biosdevname=0"
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+    # restart the computer
+[SERVER] set static ip
+    nano /etc/network/interfaces
+    iface eth0 inet static
+        address 10.14.5.254
+        netmask 255.255.255.0
+        gateway 10.14.5.1
+    # set also dns server
+    nano /etc/resolv.conf
+        nameserver 8.8.8.8
+        nameserver 8.8.4.4
+    systemctl restart networking
+    systemctl restart NetworkManager
+[SERVER] install webmin
+    curl -o setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-respos.sh
+    chmod +x ./setup-repos.sh
+    ./setup-repos.sh
+    apt install --install-recommends webmin
+    rm ./setup-repos.sh
+add a directory to paths
+    export PATH=/opt/bin:$PATH
