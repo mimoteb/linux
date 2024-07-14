@@ -1,3 +1,7 @@
+# Enable forwarding
+    # echo 1 | tee /proc/sys/net/ipv4/ip_forward
+    # persistent in /etc/sysctl.conf - net.ipv4.ip_forward=1
+    
 View Current Rules
 iptables -L                # List all rules
 iptables -L -v -n          # List rules with detailed info and numeric addresses
